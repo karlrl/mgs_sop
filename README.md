@@ -1,5 +1,8 @@
 # Metagenomic Standard Operating Procedure
 
+> :construction: The SOP is not fully implemented here. See the Langille Lab's
+> [wiki][langille_sop] for the most up-to-date version.
+
 The [Langille Lab's metagenomic SOP][langille_sop], implemented as a [WDL][wdl]
 workflow.
 
