@@ -1,0 +1,5 @@
+{
+  "preprocess.sample_id": "SRR3644404",
+  "preprocess.raw_fastq_dir": "tests/data/fastq/",
+  "preprocess.threads": 1
+}

@@ -1,0 +1,5 @@
+{
+  "preprocess.sample_id": "String",
+  "preprocess.raw_fastq_dir": "String",
+  "preprocess.threads": "Int"
+}

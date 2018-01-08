@@ -1,0 +1,10 @@
+name: mgs_sop
+channels:
+- bioconda
+- defaults
+dependencies:
+- cromwell=0.29=py36_0
+- kneaddata=0.6.1=py36_0
+- pear=0.9.6=2
+- sra-tools=2.8.2=0
+- wdltool=0.14=py36_0
