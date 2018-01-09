@@ -10,6 +10,13 @@ workflow preprocess {
       reverse_reads="${raw_fastq_dir}/${sample_id}_2.fastq",
       threads=threads,
   }
+
+  call concatenate_paired {
+    input:
+      sample_id=sample_id,
+      forward_reads=screen_and_trim_paired.paired_1,
+      reverse_reads=screen_and_trim_paired.paired_2,
+  }
 }
 
 task screen_and_trim_paired {
@@ -44,3 +51,16 @@ task screen_and_trim_paired {
   }
 }
 
+task concatenate_paired {
+  String sample_id
+  File forward_reads
+  File reverse_reads
+
+  command {
+    cat ${forward_reads} ${reverse_reads} > ${sample_id}.fastq
+  }
+
+  output {
+    File fastq="${sample_id}.fastq"
+  }
+}
