@@ -1,4 +1,4 @@
-workflow preprocess {
+workflow mgs_sop {
   String sample_id
   String raw_fastq_dir
   Int threads
