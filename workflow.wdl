@@ -3,7 +3,7 @@ workflow preprocess {
   String raw_fastq_dir
   Int threads
 
-  call kneaddata_paired {
+  call screen_and_trim_paired {
     input:
       sample_id=sample_id,
       forward_reads="${raw_fastq_dir}/${sample_id}_1.fastq",
@@ -12,7 +12,7 @@ workflow preprocess {
   }
 }
 
-task kneaddata_paired {
+task screen_and_trim_paired {
   String sample_id
   File forward_reads
   File reverse_reads
