@@ -1,11 +1,13 @@
 workflow mgs_sop {
   String sample_id
   String raw_fastq_dir
+  String bowtie2_database_dir
   Int threads
 
   call screen_and_trim_paired {
     input:
       sample_id=sample_id,
+      bowtie2_database_dir=bowtie2_database_dir,
       forward_reads="${raw_fastq_dir}/${sample_id}_1.fastq",
       reverse_reads="${raw_fastq_dir}/${sample_id}_2.fastq",
       threads=threads,
@@ -20,6 +22,7 @@ workflow mgs_sop {
 }
 
 task screen_and_trim_paired {
+  String bowtie2_database_dir
   String sample_id
   File forward_reads
   File reverse_reads
@@ -30,7 +33,7 @@ task screen_and_trim_paired {
       -i ${forward_reads} \
       -i ${reverse_reads} \
       -o kneaddata_out/ \
-      -db /Users/karl/Development/dbs/bowtie/GRCh38_PhiX \
+      -db ${bowtie2_database_dir} \
       -t ${threads} \
       --trimmomatic-options "SLIDINGWINDOW:4:20 MINLEN:50" \
       --trimmomatic $CONDA_PREFIX/share/trimmomatic-* \

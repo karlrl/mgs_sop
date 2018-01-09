@@ -6,11 +6,14 @@
 The [Langille Lab's metagenomic SOP][langille_sop], implemented as a [WDL][wdl]
 workflow.
 
+## Prerequisites
 
-## Install dependencies
+This workflow is designed to be run on a Unix-based system.
 
-To get started quickly, we use [`conda`][miniconda] to simplify the management
-of the execution environment:
+### Install dependencies
+
+To ease the installation of dependencies, we use [`conda`][miniconda] to manage
+the execution environment:
 
 ```
 $ conda env create
@@ -20,13 +23,39 @@ $ source activate mgs_sop
 If you'd like to install the tools manually, see the `environment.yml` file for
 the project dependencies.
 
+### Set input variables
+
+The workflow relies on several user supplied inputs to complete its tasks.
+Before running the workflow, you'll want to copy the input template and
+populate it with the details for your project and environment. For example:
+
+```
+$ cp inputs.template.json inputs.json
+```
+
+Then open the file with your preferred text editor and fill in the values. Some
+values describe the location of required databases (see following section).
+
+### Download required databases
+
+A mapping database for screening reads can be downloaded from the Langille Lab
+(Note: the file is ~3.5GB):
+
+```
+$ curl \
+    http://kronos.pharmacology.dal.ca/public_files/GRCh38_PhiX_bowtie2_index.tar.gz \
+    > /tmp/GRCh38_PhiX_bowtie2_index.tar.gz
+$ tar xvzf GRCh38_PhiX_bowtie2_index.tar.gz -C databases
+$ rm /tmp/GRCh38_PhiX_bowtie2_index.tar.gz
+
+# Copy and paste the absolute path of the database directory in your
+# inputs.json. If on Linux, you can get the full path by:
+$ readlink -f databases/GRCh38_PhiX_bowtie2_index/
+```
 
 ## Running the workflow
 
-To run the workflow, first copy the inputs template (`inputs.template.json`)
-and add the appropriate configuration for your data and processing needs.
-
-Then, run the workflow with Cromwell (assumes the populated inputs template was
+Run the workflow with Cromwell (assumes the populated inputs template was
 named `inputs.json`):
 
 ```

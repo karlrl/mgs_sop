@@ -1,4 +1,5 @@
 cromwell-executions/
 cromwell-workflow-logs/
+databases/
 inputs.json
 tests/data/fastq/*

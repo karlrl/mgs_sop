@@ -1,5 +1,6 @@
 {
-  "preprocess.sample_id": "SRR3644404",
-  "preprocess.raw_fastq_dir": "tests/data/fastq/",
-  "preprocess.threads": 1
+  "mgs_sop.bowtie2_database_dir": "/path/to/bowtie2/dbs/GRCh38_PhiX_bowtie2_index/",
+  "mgs_sop.threads": 1,
+  "mgs_sop.raw_fastq_dir": "tests/data/fastq/",
+  "mgs_sop.sample_id": "SRR3644404"
 }

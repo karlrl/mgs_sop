@@ -1,5 +1,6 @@
 {
-  "preprocess.sample_id": "String",
-  "preprocess.raw_fastq_dir": "String",
-  "preprocess.threads": "Int"
+  "mgs_sop.bowtie2_database_dir": "String",
+  "mgs_sop.threads": "Int",
+  "mgs_sop.raw_fastq_dir": "String",
+  "mgs_sop.sample_id": "String"
 }
